@@ -25,9 +25,9 @@ wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo ap
 sudo apt-get -qq install Postgresql-9.3-postgis pgadmin3 postgresql-contrib libpq-dev
 
 # create superuser for for self
-sudo su - postgres
-createuser -s [your user name]
-exit
+# sudo su - postgres
+# createuser -s [your user name]
+# exit
 
 # MySQL
 sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
@@ -45,7 +45,7 @@ gpg --keyserver keyserver.ubuntu.com --recv 47765B75
 gpg --export --armor 47765B75 | sudo apt-key add -
 
 # install
-sudo apt-get update
+sudo apt-get -qq update
 sudo apt-get -qq install qgis python-qgis
 
 # Node
@@ -59,30 +59,30 @@ sudo apt-get -qq install qgis python-qgis
 
 # Version 1
 echo "installing Node.js"
-sudo apt-get update
+sudo apt-get -qq update
 sudo apt-get -qq install -y python-software-properties python g++ make
 sudo add-apt-repository -y ppa:chris-lea/node.js
-sudo apt-get update
+sudo apt-get -qq update
 sudo apt-get -qq install nodejs
 
 # Install node libraries
 echo "installing node-based tools"
-sudo npm install -g grunt-cli yo bower generator-newsapp
+# sudo npm install -g grunt-cli yo bower generator-newsapp
 
 # Version 2
 # Modified from
 # http://increaseyourgeek.wordpress.com/2010/08/18/install-node-js-without-using-sudo/
 
-wget http://nodejs.org/dist/v0.10.25/node-v0.10.25.tar.gz
-tar -xvzf node-v0.10.25.tar.gz
-cd node-v0.10.25
-mkdir ~/.node
-./configure --prefix=~/.node
-make
-make install
-echo 'export PATH=~/.node/bin:${PATH}' >> ~/.zshrc
-# this may happen automatically so check first
-echo "export NODE_PATH=$NODE_PATH:/$HOME/.node/lib/node_modules" >> ~/.zshrc && source ~/.zshrc
+# wget http://nodejs.org/dist/v0.10.25/node-v0.10.25.tar.gz
+# tar -xvzf node-v0.10.25.tar.gz
+# cd node-v0.10.25
+# mkdir ~/.node
+# ./configure --prefix=~/.node
+# make
+# make install
+# echo 'export PATH=~/.node/bin:${PATH}' >> ~/.zshrc
+# # this may happen automatically so check first
+# echo "export NODE_PATH=$NODE_PATH:/$HOME/.node/lib/node_modules" >> ~/.zshrc && source ~/.zshrc
 
 # Install Ruby
 echo "install Ruby and Ruby Version Manager (RVM)"
