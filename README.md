@@ -22,6 +22,7 @@ $ cd vm
 $ bash install-vm.sh
 ```
 `install-vm.sh` does the following:
+
 1. Downloads the 3 GB virtual machine image from Amazon S3
 2. Imports it into VirtualBox and configures it
 3. Starts the virtual machine
@@ -31,4 +32,4 @@ $ bash install-vm.sh
 ## Contributing
 
 ## License
-MIT. See [LICENSE]() for more information
+MIT. See [LICENSE](https://github.com/cirlabs/vm/blob/master/LICENSE) for more information
