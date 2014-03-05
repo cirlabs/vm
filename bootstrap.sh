@@ -4,6 +4,9 @@ echo "updating ubuntu"
 sudo apt-get -qq update
 sudo apt-get -qq upgrade
 
+echo "installing zsh and oh-my-zsh"
+wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+
 # development
 echo "installing development tools"
 sudo apt-get -qq install build-essential
