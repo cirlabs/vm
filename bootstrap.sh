@@ -26,6 +26,7 @@ sudo pip install bs4 beautifulsoup requests django virtualenvwrapper pandas csvk
 echo "installing PostgreSQL 9.3 and PostGIS 2.1"
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list'
 wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get -qq update
 sudo apt-get -qq install Postgresql-9.3-postgis pgadmin3 postgresql-contrib libpq-dev
 
 # create superuser for for self
