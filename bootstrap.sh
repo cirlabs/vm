@@ -4,9 +4,6 @@ echo "updating ubuntu"
 sudo apt-get -qq update
 sudo apt-get -qq upgrade
 
-echo "installing zsh and oh-my-zsh"
-wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
-
 # development
 echo "installing development tools"
 sudo apt-get -qq install build-essential
@@ -14,6 +11,10 @@ sudo apt-get -qq install build-essential
 # Git
 echo "installing git"
 sudo apt-get -qq install git-core
+
+# zsh
+echo "installing zsh and oh-my-zsh"
+wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 
 # python scientific stack
 echo "installing python scientific stack"
