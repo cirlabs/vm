@@ -45,6 +45,10 @@ $ bash install-vm.sh
 2. Downloads the 3 GB virtual machine image from Amazon S3
 3. Imports it into VirtualBox and configures it
 4. Starts the virtual machine
+5. 
+
+## Roll your own
+Not enterested in using VirtualBox but want to bootstrap a Linux box for data journalism? Checkout [bootstrap.sh](https://github.com/cirlabs/vm/blob/master/bootstrap.sh).
 
 ## Help
 [Open an issue](https://github.com/cirlabs/vm/issues)
