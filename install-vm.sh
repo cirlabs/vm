@@ -5,7 +5,19 @@
 ## SETUP
 ## =================
 
+# Caution is a virtue.
+set -o nounset
+set -o errtrace
+set -o errexit
+set -o pipefail
+
 # ## Utilities
+
+# Store the original `cwd`.
+orig_cwd=`pwd`
+
+# Options passed to each `curl` command.
+curl_opts=${CURL_OPTS:-""}
 
 # Print a message to the console.
 log()  { printf "$*\n" ; return $? ; }
@@ -20,25 +32,25 @@ download() {
         log "Found ${1} at ${3} - skipping download"
     else
         log "Downloading ${1} from ${2} to ${3}"
-        curl ${curl_opts} -L "${2}" -o "${3}" || fail "Failed to download ${2} to ${ievms_home}/${3} using 'curl', error code ($?)"
+        curl ${curl_opts} -L "${2}" -o "${3}" || fail "Failed to download ${2} to ${vms_home}/${3} using 'curl', error code ($?)"
     fi
 }
 
 # ## General Setup
 
-# Create the ievms home folder and `cd` into it. The `INSTALL_PATH` env variable
+# Create the vms home folder and `cd` into it. The `INSTALL_PATH` env variable
 # is used to determine the full path. The home folder is then added to `PATH`.
 create_home() {
-    local def_ievms_home="${HOME}/.ievms"
-    ievms_home=${INSTALL_PATH:-$def_ievms_home}
+    local def_vms_home="${HOME}/.vms"
+    vms_home=${INSTALL_PATH:-$def_vms_home}
 
-    mkdir -p "${ievms_home}"
-    cd "${ievms_home}"
+    mkdir -p "${vms_home}"
+    cd "${vms_home}"
 
-    PATH="${PATH}:${ievms_home}"
+    PATH="${PATH}:${vms_home}"
 
     # Move ovas and zips from a very old installation into place.
-    mv -f ./ova/IE*/IE*.{ova,zip} "${ievms_home}/" 2>/dev/null || true
+    mv -f ./ova/IE*/IE*.{ova,zip} "${vms_home}/" 2>/dev/null || true
 }
 
 # Check for a supported host system (Linux/OS X).
@@ -92,49 +104,69 @@ check_ext_pack() {
 
         download "Oracle VM VirtualBox Extension Pack" "${url}" "${archive}"
 
-        log "Installing Oracle VM VirtualBox Extension Pack from ${ievms_home}/${archive}"
-        VBoxManage extpack install "${archive}" || fail "Failed to install Oracle VM VirtualBox Extension Pack from ${ievms_home}/${archive}, error code ($?)"
+        log "Installing Oracle VM VirtualBox Extension Pack from ${vms_home}/${archive}"
+        VBoxManage extpack install "${archive}" || fail "Failed to install Oracle VM VirtualBox Extension Pack from ${vms_home}/${archive}, error code ($?)"
     fi
 }
 
+download_vm() {
+    log "Checking for NICAR VM image"
+    if [ ! -f "$vms_home/nicar-pre-k-2014.ova" ]; then
+        ## fetch files
+        log "Fetching Virtual Machine"
+        wget https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2014.ova
 
+        log "saved to $vms_home/nicar-pre-k-2014"
 
-# Install virtualbox
-echo -e "Installing VirtualBox, VirtualBox guest additions and extension pack\n=============================="
-sudo apt-get -qq install virtualbox 
+        ## make sure the files match
+        # checksum="434db66814214674877454edabe04551  nicar-pre-k-2014.ova"
+        # echo -e "checking if the file matches the original checksum of " + $checksum + "\n================="
+        # get new checksum
+        # newchecksum=$(md5sum nicar-pre-k-2014.ova)
 
+        # if [[ $newchecksum -eq $checksum ]]; then
+        #     echo -e "Checksum matches. Continuing import!\n================="
+        # fi
+    fi
+}
 
+import_vm() {
+    log "Check if Virtual machine is already installed"
+    vm_name="Nicar Pre-K (Xubuntu)"
+    if ! VBoxManage list vms | grep -Po '"Nicar.*"'; then
+        # import the appliance into virtualbox and reinitialize the mac addresss
+        log "Type path to install VM, followed by [ENTER]. Defaults to /home/$USER/VirtualBox VMs"
+        # receive user input
+        read user_path
 
+        log "Importing VM"
+        # set the user path, otherwise, import normally
+        if ! $user_path; then
+            VBoxManage import "$vms_home/nicar-pre-k-2014.ova" --vsys 0 --unit 11 --disk "$user_path/$vm_name/nicar-pre-k-2014.vmdk"
+        else
+            VBoxManage import "$vms_home/nicar-pre-k-2014.ova"
+        fi
 
+        # reinitialize the mac address
+        uuid=$(VBoxManage list vms | grep Nicar | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
+        log "modifying the MAC address"
+        VBoxManage modifyvm $uuid --macaddress1 auto
+    fi
+}
 
+start_vm() {
+    ## start the VM
+    uuid=$(VBoxManage list vms | grep Nicar | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
+    log "Starting Virtual Machine"
+    VBoxManage startvm $uuid
+}
 
-## some necessary variables
-vmname="Nicar Pre-K (Xubuntu)"
-uuid=$(VBoxManage list vms | grep Nicar | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
-)
-checksum="434db66814214674877454edabe04551  nicar-pre-k-2014.ova"
-
-## fetch files
-echo -e "Fetching Virtual Machine image\n=================\n"
-wget https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2014.ova
-
-## make sure the files match
-# echo -e "checking if the file matches the original checksum of " + $checksum + "\n================="
-# get new checksum
-# newchecksum=$(md5sum nicar-pre-k-2014.ova)
-
-# if [[ $newchecksum -eq $checksum ]]; then
-#     echo -e "Checksum matches. Continuing import!\n================="
-# fi
-
-## import the appliance into virtualbox and reinitialize the mac addresss
-echo -e "Importing VM\n================="
-VBoxManage import nicar-pre-k-2014.ova
-
-# reinitialize the mac address
-echo -e "modifying the MAC address ...\n================="
-VBoxManage modifyvm $uuid --macaddress1 auto
-
-## start the VM
-echo -e "Starting Virtual Machine\n================="
-VBoxManage startvm $uuid
+## BLASTOFF
+check_system
+create_home
+check_virtualbox
+check_version
+check_ext_pack
+download_vm
+import_vm
+start_vm
