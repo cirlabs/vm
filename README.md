@@ -28,7 +28,6 @@ A data journalism virtual machine image for VirtualBox
 ## Requirements
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (Choose your operating system)
 - `git`
-- `curl`
 - About 10 GB of disk space locally or on an external HDD/thumbdrive
 - some time
 
@@ -45,7 +44,6 @@ $ bash install-vm.sh
 2. Downloads the 3 GB virtual machine image from Amazon S3
 3. Imports it into VirtualBox and configures it
 4. Starts the virtual machine
-5. 
 
 ## Roll your own
 Not enterested in using VirtualBox but want to bootstrap a Linux box for data journalism? Checkout [bootstrap.sh](https://github.com/cirlabs/vm/blob/master/bootstrap.sh).
