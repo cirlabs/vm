@@ -32,6 +32,9 @@ A data journalism virtual machine image for VirtualBox
 - some time
 
 ## Installing the Virtual Machine
+
+### Mac OS X / Linux
+
 With VirtualBox installed, kick open terminal and type:
 ```bash
 $ git clone git@github.com:cirlabs/vm.git
@@ -44,6 +47,13 @@ $ bash install-vm.sh
 2. Downloads the 3 GB virtual machine image from Amazon S3
 3. Imports it into VirtualBox and configures it
 4. Starts the virtual machine
+
+### Windows
+Windows doesn't have bash so this script won't work. You can probably install [Cygwin](http://www.cygwin.com/) and try it there but I have not tested it. 
+
+You're probably better off downloading the VirtualBox image directly from our AWS S3 bucket and importing it that way:
+
+[Data Journalism VM file](https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2014.ova) (3GB)
 
 ## Roll your own
 Not enterested in using VirtualBox but want to bootstrap a Linux box for data journalism? Checkout [bootstrap.sh](https://github.com/cirlabs/vm/blob/master/bootstrap.sh).
