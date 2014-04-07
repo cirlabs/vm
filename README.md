@@ -11,7 +11,7 @@ A bunch of libraries comingly used by data journalist. This includes (but is not
 - QGIS
 - csvkit
 
-See [PACKAGE]() for full list
+See [PACKAGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for full list
 
 ## Requirements
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (Choose your operating system)
