@@ -2,7 +2,7 @@ vm
 ==
 A data journalism virtual machine image for VirtualBox
 
-## Features
+## Features 
 - csvkit
 - Python
 - Git
@@ -27,7 +27,6 @@ A data journalism virtual machine image for VirtualBox
 
 ## Requirements
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (Choose your operating system)
-- `git`
 - About 10 GB of disk space locally or on an external HDD/thumbdrive
 - some time
 
@@ -37,8 +36,7 @@ A data journalism virtual machine image for VirtualBox
 
 With VirtualBox installed, kick open terminal and type:
 ```bash
-$ git clone git@github.com:cirlabs/vm.git
-$ cd vm
+$ wget https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.s
 $ bash install-vm.sh
 ```
 `install-vm.sh` does the following:
@@ -49,9 +47,7 @@ $ bash install-vm.sh
 4. Starts the virtual machine
 
 ### Windows
-Windows doesn't have bash so this script won't work. You can probably install [Cygwin](http://www.cygwin.com/) and try it there but I have not tested it. 
-
-You're probably better off downloading the VirtualBox image directly from our AWS S3 bucket and importing it that way:
+Windows doesn't have bash so this script won't work. You can probably install [Cygwin](http://www.cygwin.com/) and try it there but I have not tested it. You're probably better off downloading the VirtualBox image directly from our AWS S3 bucket and importing it that way:
 
 [Data Journalism VM file](https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2014.ova) (3GB)
 
