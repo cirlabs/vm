@@ -36,7 +36,7 @@ A data journalism virtual machine image for VirtualBox
 
 With VirtualBox installed, kick open terminal and type:
 ```bash
-$ wget https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.s
+$ wget https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh
 $ bash install-vm.sh
 ```
 `install-vm.sh` does the following:
