@@ -1,9 +1,15 @@
 vm
 ==
-A data journalism virtual machine image for VirtualBox. Meant for beginners and/or people interested in learning the data journalism stack. Direct link to the image: [Data Journalism VM file](https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2014.ova) (3GB)
+A Linux-powered data journalism virtual machine image for VirtualBox. Meant for beginners and/or people interested in learning the data journalism stack. Direct link to the image: [Data Journalism VM .ova](https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2014.ova) (3GB)
+
+## Quickstart
+With VirtualBox installed, kick open Terminal, paste the below command and press enter:
+```bash
+$ wget https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh && bash install-vm.sh
+```
 
 ## Features
-A bunch of libraries comingly used by data journalist. This includes (but is not limited to):
+The [Xubuntu 13.10](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist. This includes (but is not limited to):
 - IPython
 - Django
 - SQLite, MySQL, PostgreSQL/PostGIS
@@ -16,22 +22,18 @@ See [PACKAGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for full list
 ## Requirements
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (Choose your operating system)
 - About 10 GB of disk space locally or on an external HDD/thumbdrive
-- some time
-
-## VirtualBox Image Notes
-- OS: Xubuntu Linux 13.10
-- RAM: 1GB
-- HDD: 8GB / Dynamically allocated
+- Time
 
 ## Installing the Virtual Machine
 
 ### Mac OS X / Linux
+1. Download the script: [VM-1.0.zip](https://github.com/cirlabs/vm/archive/1.0.zip)
+2. Extract the .zip file. You should see a file called `install-vm.sh` inside the folder.
+3. Open Terminal. For Mac OS X, go to `Applications/Utilities/Terminal.app`. For Linux, press __CTRL+ALT+T__ to open it.
+4. In Terminal, type `bash` and the path to `install-vm.sh`. The easiest way to do this is to type `bash` and then *drag-and-drop* `install-vm.sh` into the terminal prompt. You should have something like __`bash /Users/username/Downloads/VM-1.0/install-vm-sh`__.
+5. Press [ENTER] and follow the instructions
 
-With VirtualBox installed, kick open terminal and type:
-```bash
-$ wget https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh
-$ bash install-vm.sh
-```
+
 `install-vm.sh` does the following:
 
 1. Installs the VirtualBox extension pack
@@ -55,8 +57,11 @@ Do the following:
 ## Roll your own
 Not enterested in using VirtualBox but want to bootstrap a Linux box for data journalism? Checkout [bootstrap.sh](https://github.com/cirlabs/vm/blob/master/bootstrap.sh).
 
+## Cleanup
+The 3 GB .ova file should be saved to `~/.vms`. You can remove it, as well as any other files, to regain that disk space back. You can also remove the `install-vm.sh` file.
+
 ## Limitations / Notes
-- The VM will have a 800x600 screen resolution on startup. There are ways to make your VM fit the size of your host display but that goes on beyond the scope of this project. See [VirtualBox Manual 1.8.5. Resizing the machine's window](https://www.virtualbox.org/manual/ch01.html#intro-resize-window) for more details.
+- The VM will have a 800x600 screen resolution on startup. There are ways to make your VM fit the size of your host display but that goes on beyond the scope of this project. See [VirtualBox Manual 1.8.5. Resizing the machine's window](https://www.virtualbox.org/manual/ch01.html#intro-resize-window) for more details. Do note that installing VirtualBox Guest Additions only works for Windows and Linux users. Sorry Mac folks.
 - This VM is meant as a place to practice and learn about data journalism and software development. It's running a lightweight Linux distribtion and uses just enough RAM to not be a headache. While it is my hope you use this VM to learn and create some awesome projects, my greater hope would be that you abandon the VM altogether and configure your laptop directly with either Linux or whatever OS you prefer. Again, more than anything, this is more of a teaching tool than a fully supported out-the-box rig. That could change in the future, but that is the focus of this project as of now.
 
 ## Help
