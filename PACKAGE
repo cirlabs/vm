@@ -5,7 +5,7 @@ Password: nicar
 # VirtualBox Image Notes
 - OS: Xubuntu Linux 13.10
 - RAM: 1GB
-- HDD: 30GB / Dynamically allocated
+- HDD: 30GB Total Capacity / (7.42 GB when first installed) Dynamically allocated
 
 # installed command line programs
 csvkit
