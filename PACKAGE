@@ -2,6 +2,11 @@
 User: nicar
 Password: nicar
 
+# VirtualBox Image Notes
+- OS: Xubuntu Linux 13.10
+- RAM: 1GB
+- HDD: 30GB / Dynamically allocated
+
 # installed command line programs
 csvkit
 Python
