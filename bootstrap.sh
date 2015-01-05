@@ -22,6 +22,11 @@ sudo apt-get -qq install python-numpy python-scipy python-matplotlib ipython ipy
 
 sudo pip install bs4 beautifulsoup requests django virtualenvwrapper pandas csvkit
 
+mkdir .envs
+
+echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.zshrc
+
 # postgres
 echo "installing PostgreSQL 9.3 and PostGIS 2.1"
 sudo apt-get install postgresql
