@@ -24,10 +24,8 @@ sudo pip install bs4 beautifulsoup requests django virtualenvwrapper pandas csvk
 
 # postgres
 echo "installing PostgreSQL 9.3 and PostGIS 2.1"
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list'
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get -qq update
-sudo apt-get -qq install Postgresql-9.3-postgis pgadmin3 postgresql-contrib libpq-dev
+sudo apt-get install postgresql
+sudo apt-get install postgis
 
 # create superuser for for self
 # sudo su - postgres
@@ -39,19 +37,8 @@ sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 
 #qgis
 echo "installing QGIS"
-# this may change based on your ubuntu distro
-# See http://www.qgis.org/en/site/forusers/alldownloads.html#qgis-stable
-# Assuming 13.10 Saucy ...
-sudo sh -c 'echo "deb     http://qgis.org/debian saucy main" >> /etc/apt/sources.list'
-sudo sh -c 'echo "deb-src http://qgis.org/debian saucy main" >> /etc/apt/sources.list'
 
-# keyerror fix
-gpg --keyserver keyserver.ubuntu.com --recv 47765B75
-gpg --export --armor 47765B75 | sudo apt-key add -
-
-# install
-sudo apt-get -qq update
-sudo apt-get -qq install qgis python-qgis
+sudo apt-get install qgis
 
 # Node
 # Node/NPM is weird on Ubuntu. If you install node/npm using sudo, then your filesystem will throw permission errors when 
@@ -64,30 +51,11 @@ sudo apt-get -qq install qgis python-qgis
 
 # Version 1
 echo "installing Node.js"
-sudo apt-get -qq update
-sudo apt-get -qq install -y python-software-properties python g++ make
-sudo add-apt-repository -y ppa:chris-lea/node.js
-sudo apt-get -qq update
+
 sudo apt-get -qq install nodejs
 
-# Install node libraries
-echo "installing node-based tools"
-# sudo npm install -g grunt-cli yo bower generator-newsapp
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 
-# Version 2
-# Modified from
-# http://increaseyourgeek.wordpress.com/2010/08/18/install-node-js-without-using-sudo/
-
-# wget http://nodejs.org/dist/v0.10.25/node-v0.10.25.tar.gz
-# tar -xvzf node-v0.10.25.tar.gz
-# cd node-v0.10.25
-# mkdir ~/.node
-# ./configure --prefix=~/.node
-# make
-# make install
-# echo 'export PATH=~/.node/bin:${PATH}' >> ~/.zshrc
-# # this may happen automatically so check first
-# echo "export NODE_PATH=$NODE_PATH:/$HOME/.node/lib/node_modules" >> ~/.zshrc && source ~/.zshrc
 
 # Install Ruby
 echo "install Ruby and Ruby Version Manager (RVM)"
