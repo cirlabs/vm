@@ -83,5 +83,19 @@ rbenv install 2.2.0
 rbenv global 2.2.0
 
 
+#install Java
+
+sudo apt-get install default-jre
+
+#install jrbuy
+
+rbenv install jruby-1.7.18
+
+#install Tabula extractor for awesome command line pdf extraction
+mkdir tabula
+cd tabula
+rbenv local jruby-1.7.18
+jruby -S gem install tabula-extractor
+cd ~
 # virtualbox helpers
 # sudo apt-get -qq install virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
