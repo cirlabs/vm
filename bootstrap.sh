@@ -80,7 +80,7 @@ source ~/.zshrc
 
 #install latest stable version of Ruby
 rbenv install 2.2.0
-
+rbenv global 2.2.0
 
 
 # virtualbox helpers
