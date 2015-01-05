@@ -58,20 +58,30 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 
 # Install Ruby
-echo "install Ruby and Ruby Version Manager (RVM)"
-# Ruby dependencies
-sudo apt-get -qq install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
+echo "install Ruby, rbenv and ruby-build"
 
-# RVM dependencies 
-sudo apt-get -qq install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+#install dependencies
 
-# install RVM
-curl -L https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
-echo "source ~/.rvm/scripts/rvm" >> ~/.zshrc
-rvm install 2.1.0
-rvm use 2.1.0 --default
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+
+#install rbenv
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+
+#install ruby-build
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+source ~/.bashrc
+source ~/.zshrc
+
+#install latest stable version of Ruby
+rbenv install 2.2.0
+
+
 
 # virtualbox helpers
 # sudo apt-get -qq install virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
