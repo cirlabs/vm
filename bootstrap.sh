@@ -22,12 +22,15 @@ sudo apt-get -qq install python-numpy python-scipy python-matplotlib ipython ipy
 
 sudo pip install bs4 beautifulsoup requests django virtualenvwrapper pandas csvkit
 
+mkdir .envs
+
+echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.zshrc
+
 # postgres
 echo "installing PostgreSQL 9.3 and PostGIS 2.1"
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list'
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get -qq update
-sudo apt-get -qq install Postgresql-9.3-postgis pgadmin3 postgresql-contrib libpq-dev
+sudo apt-get install postgresql
+sudo apt-get install postgis
 
 # create superuser for for self
 # sudo su - postgres
@@ -39,19 +42,8 @@ sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 
 #qgis
 echo "installing QGIS"
-# this may change based on your ubuntu distro
-# See http://www.qgis.org/en/site/forusers/alldownloads.html#qgis-stable
-# Assuming 13.10 Saucy ...
-sudo sh -c 'echo "deb     http://qgis.org/debian saucy main" >> /etc/apt/sources.list'
-sudo sh -c 'echo "deb-src http://qgis.org/debian saucy main" >> /etc/apt/sources.list'
 
-# keyerror fix
-gpg --keyserver keyserver.ubuntu.com --recv 47765B75
-gpg --export --armor 47765B75 | sudo apt-key add -
-
-# install
-sudo apt-get -qq update
-sudo apt-get -qq install qgis python-qgis
+sudo apt-get install qgis
 
 # Node
 # Node/NPM is weird on Ubuntu. If you install node/npm using sudo, then your filesystem will throw permission errors when 
@@ -64,46 +56,51 @@ sudo apt-get -qq install qgis python-qgis
 
 # Version 1
 echo "installing Node.js"
-sudo apt-get -qq update
-sudo apt-get -qq install -y python-software-properties python g++ make
-sudo add-apt-repository -y ppa:chris-lea/node.js
-sudo apt-get -qq update
+
 sudo apt-get -qq install nodejs
 
-# Install node libraries
-echo "installing node-based tools"
-# sudo npm install -g grunt-cli yo bower generator-newsapp
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 
-# Version 2
-# Modified from
-# http://increaseyourgeek.wordpress.com/2010/08/18/install-node-js-without-using-sudo/
-
-# wget http://nodejs.org/dist/v0.10.25/node-v0.10.25.tar.gz
-# tar -xvzf node-v0.10.25.tar.gz
-# cd node-v0.10.25
-# mkdir ~/.node
-# ./configure --prefix=~/.node
-# make
-# make install
-# echo 'export PATH=~/.node/bin:${PATH}' >> ~/.zshrc
-# # this may happen automatically so check first
-# echo "export NODE_PATH=$NODE_PATH:/$HOME/.node/lib/node_modules" >> ~/.zshrc && source ~/.zshrc
 
 # Install Ruby
-echo "install Ruby and Ruby Version Manager (RVM)"
-# Ruby dependencies
-sudo apt-get -qq install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
+echo "install Ruby, rbenv and ruby-build"
 
-# RVM dependencies 
-sudo apt-get -qq install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
+#install dependencies
 
-# install RVM
-curl -L https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
-echo "source ~/.rvm/scripts/rvm" >> ~/.zshrc
-rvm install 2.1.0
-rvm use 2.1.0 --default
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 
+#install rbenv
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+
+#install ruby-build
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+source ~/.bashrc
+source ~/.zshrc
+
+#install latest stable version of Ruby
+rbenv install 2.2.0
+rbenv global 2.2.0
+
+
+#install Java
+
+sudo apt-get install default-jre
+
+#install jrbuy
+
+rbenv install jruby-1.7.18
+
+#install Tabula extractor for awesome command line pdf extraction
+mkdir tabula
+cd tabula
+rbenv local jruby-1.7.18
+jruby -S gem install tabula-extractor
+cd ~
 # virtualbox helpers
 # sudo apt-get -qq install virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
