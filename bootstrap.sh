@@ -100,4 +100,10 @@ rbenv local jruby-1.7.18
 jruby -S gem install tabula-extractor
 cd ~
 
-echo "All done! Go save journalism!"
+# randomly generate animal
+# animals=$(cowsay -l | tail -n+2 | shuf)
+# test=" " read -a array <<< "$animals"
+
+# # cowsay
+# cowsay -f ${array[2]} "All done! Now, go save journalism!"
+cowsay "All done! Now, go save journalism!"
