@@ -1,4 +1,6 @@
 #!/bin/sh
+# set the user
+THISUSER=whoami
 
 echo "updating ubuntu"
 sudo apt-get -qq update
@@ -6,7 +8,7 @@ sudo apt-get -qq upgrade
 
 # development
 echo "installing development tools"
-sudo apt-get -qq install build-essential
+sudo apt-get -qq install build-essential fortune cowsay # hehehe
 
 # Git
 echo "installing git"
@@ -20,54 +22,58 @@ wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master
 echo "installing python scientific stack"
 sudo apt-get -qq install python-numpy python-scipy python-matplotlib ipython ipython-doc ipython-notebook ipython-qtconsole python-virtualenv python-dev python-pip python-sip pyqt4-dev-tools
 
-sudo pip install bs4 beautifulsoup requests django virtualenvwrapper pandas csvkit
+# various Python libraries we like
+echo "pip installing favored Python libraries"
+sudo pip install --quiet beautifulsoup4
+sudo pip install --quiet requests
+sudo pip install --quiet django
+sudo pip install --quiet virtualenvwrapper
+sudo pip install --quiet pandas
+sudo pip install --quiet csvkit
 
+# make sure virtalenvwrapper is loaded and works
+echo "  setting up virtualenvwrapper"
 mkdir .envs
+echo "export WORKON_HOME=$HOME/.envs" >> ~/.bashrc
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
 
-echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
-echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.zshrc
+echo "export WORKON_HOME=$HOME/.envs" >> ~/.zshrc
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.zshrc
 
 # postgres
-echo "installing PostgreSQL 9.3 and PostGIS 2.1"
-sudo apt-get install postgresql
-sudo apt-get install postgis
+echo "installing latest PostgreSQL and PostGIS"
+sudo apt-get install -qq postgresql
+sudo apt-get install -qq postgis
 
 # create superuser for for self
-# sudo su - postgres
-# createuser -s [your user name]
-# exit
+echo "  setting up PostgreSQL superuser"
+sudo su - postgres
+"CREATE USER nicar SUPERUSER;" | psql -d postgres
+exit
 
 # MySQL
+echo "Installing MySQL"
 sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 
 #qgis
 echo "installing QGIS"
-
 sudo apt-get install qgis
 
-# Node
-# Node/NPM is weird on Ubuntu. If you install node/npm using sudo, then your filesystem will throw permission errors when 
-# doing local installs of node modules. I'm not entirely sure why this is an issue, but needless to say, you'll run into 
-# problems when working with node packages.
-
-# A solution to this is to make node locally and install stuff with npm from your user. 
-# As a result, you won't need to run sudo to install node dependencies and your life will be easier. 
-# Pick your poison:
-
-# Version 1
+# node.js
 echo "installing Node.js"
-
 sudo apt-get -qq install nodejs
-
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
+
+#install Java
+echo "installing Java"
+sudo apt-get -qq install default-jre
 
 # Install Ruby
 echo "install Ruby, rbenv and ruby-build"
 
 #install dependencies
-
-sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt-get install -qq autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 
 #install rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -88,19 +94,21 @@ rbenv install 2.2.0
 rbenv global 2.2.0
 
 
-#install Java
-
-sudo apt-get install default-jre
-
-#install jrbuy
-
+#install jruby
+echo "installing jruby for Tabula"
 rbenv install jruby-1.7.18
-
 #install Tabula extractor for awesome command line pdf extraction
+echo "Setting up Tabula"
 mkdir tabula
 cd tabula
 rbenv local jruby-1.7.18
 jruby -S gem install tabula-extractor
-cd ~
-# virtualbox helpers
-# sudo apt-get -qq install virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
+cd # return home
+
+# randomly generate animal
+# animals=$(cowsay -l | tail -n+2 | shuf)
+# test=" " read -a array <<< "$animals"
+
+# # cowsay
+# cowsay -f ${array[2]} "All done! Now, go save journalism!"
+cowsay "All done! Now, go save journalism!"
