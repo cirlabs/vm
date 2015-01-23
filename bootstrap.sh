@@ -1,4 +1,6 @@
 #!/bin/sh
+# set the user
+THISUSER=whoami
 
 echo "updating ubuntu"
 sudo apt-get -qq update
@@ -30,11 +32,13 @@ sudo pip install --quiet pandas
 sudo pip install --quiet csvkit
 
 # make sure virtalenvwrapper is loaded and works
-echo "setting up virtualenvwrapper"
+echo "  setting up virtualenvwrapper"
 mkdir .envs
-echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
-echo "# virtualenvwrapper\nexport WORKON_HOME=$HOME/.envs\nsource /usr/local/bin/virtualenvwrapper.sh" >> ~/.zshrc
+echo "export WORKON_HOME=$HOME/.envs" >> ~/.bashrc
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
 
+echo "export WORKON_HOME=$HOME/.envs" >> ~/.zshrc
+echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.zshrc
 
 # postgres
 echo "installing latest PostgreSQL and PostGIS"
@@ -42,9 +46,10 @@ sudo apt-get install -qq postgresql
 sudo apt-get install -qq postgis
 
 # create superuser for for self
-# sudo su - postgres
-# createuser -s [your user name]
-# exit
+echo "  setting up PostgreSQL superuser"
+sudo su - postgres
+"CREATE USER nicar SUPERUSER;" | psql -d postgres
+exit
 
 # MySQL
 echo "Installing MySQL"
@@ -98,7 +103,7 @@ mkdir tabula
 cd tabula
 rbenv local jruby-1.7.18
 jruby -S gem install tabula-extractor
-cd ~
+cd # return home
 
 # randomly generate animal
 # animals=$(cowsay -l | tail -n+2 | shuf)
