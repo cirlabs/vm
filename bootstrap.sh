@@ -46,10 +46,10 @@ sudo apt-get install -qq postgresql
 sudo apt-get install -qq postgis
 
 # create superuser for for self
-echo "  setting up PostgreSQL superuser"
-sudo su - postgres
-"CREATE USER nicar SUPERUSER;" | psql -d postgres
-exit
+# echo "  setting up PostgreSQL superuser"
+# sudo su - postgres
+# "CREATE USER nicar SUPERUSER;" | psql -d postgres
+# exit
 
 # MySQL
 echo "Installing MySQL"
