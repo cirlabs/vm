@@ -10,7 +10,7 @@ $ wget https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh && bash
 ```
 
 ## Features
-The [Xubuntu 14.10](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
+The [Xubuntu 14.04](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
 - IPython
 - Django
 - SQLite, MySQL, PostgreSQL/PostGIS
