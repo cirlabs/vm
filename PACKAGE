@@ -5,7 +5,7 @@ Password: nicar
 # VirtualBox Image Notes
 - OS: Xubuntu Linux 14.04
 - RAM: 2GB
-- HDD: 30GB Total Capacity / (7.42 GB when first installed) Dynamically allocated
+- HDD: 2 TB Total Capacity / (7.42 GB when first installed) Dynamically allocated
 
 # installed command line programs
 csvkit
