@@ -14,6 +14,6 @@ If you get lost at all during this process, refer to the VirtualBox installation
 ## Download and install virtual machine
 
 1. Once VirtualBox is installed, download the virtual machine. It's a 3GB file so make sure you have space on your hard drive: https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2015.ova
-2. Doubleclick file to install the virtual machine | Instructions: https://www.virtualbox.org/manual/ch01.html#ovf
+2. Doubleclick file to install the virtual machine | Manual: https://www.virtualbox.org/manual/ch01.html#ovf
 3. During installation, click the __Reinitialize MAC Address__ checkbox
-4. Start the virtual machine | [Instructions](https://www.virtualbox.org/manual/ch01.html#idp51818064)
+4. Start the virtual machine | [Manual](https://www.virtualbox.org/manual/ch01.html#idp51818064)
