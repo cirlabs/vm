@@ -14,7 +14,7 @@ set -o pipefail
 # ## Utilities
 # Store vm filename and display name
 remote_vm_filename="nicar-pre-k-2015.ova"
-remote_vm_display_name="NICAR (Xubuntu 14.04)" # set when the VM is created in VirtualBox
+remote_vm_display_name="NICAR" # set when the VM is created in VirtualBox
 
 # Store the original `cwd`.
 orig_cwd=`pwd`
