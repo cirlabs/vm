@@ -12,6 +12,9 @@ set -o errexit
 set -o pipefail
 
 # ## Utilities
+# Store vm filename and display name
+remote_vm_filename="nicar-pre-k-2015.ova"
+remote_vm_display_name="NICAR (Xubuntu 14.04)" # set when the VM is created in VirtualBox
 
 # Store the original `cwd`.
 orig_cwd=`pwd`
@@ -111,18 +114,18 @@ check_ext_pack() {
 
 download_vm() {
     log "Checking for NICAR VM image"
-    if [ ! -f "$vms_home/nicar-pre-k-2014.ova" ]; then
+    if [ ! -f "$vms_home/${remote_vm_filename}" ]; then
         ## fetch files
         log "Fetching Virtual Machine"
-        wget https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2014.ova
+        wget https://s3-us-west-1.amazonaws.com/vms/${remote_vm_filename}
 
-        log "saved to $vms_home/nicar-pre-k-2014"
+        log "saved to $vms_home/${remote_vm_filename}"
 
         ## make sure the files match
-        # checksum="434db66814214674877454edabe04551  nicar-pre-k-2014.ova"
+        # checksum="434db66814214674877454edabe04551 ${remote_vm_filename}"
         # echo -e "checking if the file matches the original checksum of " + $checksum + "\n================="
         # get new checksum
-        # newchecksum=$(md5sum nicar-pre-k-2014.ova)
+        # newchecksum=$(md5sum ${remote_vm_filename})
 
         # if [[ $newchecksum -eq $checksum ]]; then
         #     echo -e "Checksum matches. Continuing import!\n================="
@@ -142,13 +145,13 @@ import_vm() {
         log "Importing VM"
         # set the user path, otherwise, import normally
         if ! $user_path; then
-            VBoxManage import "$vms_home/nicar-pre-k-2014.ova" --vsys 0 --unit 11 --disk "$user_path/$vm_name/nicar-pre-k-2014.vmdk"
+            VBoxManage import "$vms_home/${remote_vm_filename}" --vsys 0 --unit 11 --disk "$user_path/$vm_name/${remote_vm_filename}"
         else
-            VBoxManage import "$vms_home/nicar-pre-k-2014.ova"
+            VBoxManage import "$vms_home/${remote_vm_filename}"
         fi
 
         # reinitialize the mac address
-        uuid=$(VBoxManage list vms | grep Nicar | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
+        uuid=$(VBoxManage list vms | grep ${remote_vm_display_name} | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
         log "modifying the MAC address"
         VBoxManage modifyvm $uuid --macaddress1 auto
     fi
@@ -156,7 +159,7 @@ import_vm() {
 
 start_vm() {
     ## start the VM
-    uuid=$(VBoxManage list vms | grep Nicar | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
+    uuid=$(VBoxManage list vms | grep ${remote_vm_display_name} | grep -Eo '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
     log "Starting Virtual Machine"
     VBoxManage startvm $uuid
 }

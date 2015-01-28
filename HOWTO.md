@@ -1,6 +1,6 @@
 How-to
 ------
-This guide will show you how to create a virtualbox virtual machine from scratch, install Xubuntu on it and bootstrap with all the latest and greatest software.
+This guide will show you how to create a virtualbox virtual machine from scratch, install Xubuntu on it and bootstrap it with all the latest and greatest software.
 
 ## Setup
 - Download and install VirtualBox and the Extensions
@@ -51,3 +51,10 @@ $ sudo su - postgres
 $ "CREATE USER nicar SUPERUSER;" | psql -d postgres
 $ exit
 ```
+
+## Export
+1. Open VirtualBox
+2. Navigate to *File > Export Appliance*
+3. Select the Xubuntu virtual machine
+4. Choose OVF 1.0 (2.0 is for cloud computing compatibility. While the latest standard, it's still buggy in other virtualization software like VMware. See: https://www.virtualbox.org/ticket/11160)
+5. Press *Export*
