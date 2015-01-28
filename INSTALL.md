@@ -1,6 +1,6 @@
 Manual installation instructions
 ---------------------------------
-A step-by-step walkthrough for manually installing the VirtualBox and CIR's data journalism VM. ONly got about it this way if you're on Windows or if you don't trust the bash script in README.
+A step-by-step walkthrough for manually installing the VirtualBox and CIR's data journalism VM. Only go about it this way if you're on Windows or if you don't trust the bash script in README. Note: Manual
 
 ## Setup VirtualBox
 
@@ -14,6 +14,6 @@ If you get lost at all during this process, refer to the VirtualBox installation
 ## Download and install virtual machine
 
 1. Once VirtualBox is installed, download the virtual machine. It's a 3GB file so make sure you have space on your hard drive: https://s3-us-west-1.amazonaws.com/vms/nicar-pre-k-2015.ova
-2. Doubleclick file to install the virtual machine | Manual: https://www.virtualbox.org/manual/ch01.html#ovf
+2. Doubleclick file to install the virtual machine | *If you get stuck*: https://www.virtualbox.org/manual/ch01.html#ovf
 3. During installation, click the __Reinitialize MAC Address__ checkbox
-4. Start the virtual machine | [Manual](https://www.virtualbox.org/manual/ch01.html#idp51818064)
+4. Start the virtual machine | *If you get stuck*: https://www.virtualbox.org/manual/ch01.html#idp51818064
