@@ -28,7 +28,7 @@ See [PACKAGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for full list
 ## Installing the Virtual Machine
 
 ### Mac OS X / Linux
-1. Download the script: [VM-2.0.zip](https://github.com/cirlabs/vm/archive/2.0.zip)
+1. Download the script: [VM-2.0.1.zip](https://github.com/cirlabs/vm/archive/2.0.1.zip)
 2. Extract the .zip file. You should see a file called `install-vm.sh` inside the folder.
 3. Open Terminal. For Mac OS X, go to `Applications/Utilities/Terminal.app`. For Linux, press __CTRL+ALT+T__ to open it.
 4. In Terminal, type `bash` and the path to `install-vm.sh`. The easiest way to do this is to type `bash` and then *drag-and-drop* `install-vm.sh` into the terminal prompt. You should have something like __`bash /Users/username/Downloads/VM-2.0/install-vm-sh`__.
