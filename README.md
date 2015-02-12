@@ -5,8 +5,13 @@ A Linux-powered data journalism virtual machine image for VirtualBox. Meant for 
 ## Quickstart
 With VirtualBox installed, kick open Terminal, paste the below command and press enter:
 
+via `curl` (Mac OS X):
 ```bash
-$ wget https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh && bash install-vm.sh
+curl - L https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh | sh
+```
+via `wget` (Linux)
+```bash
+$ wget --no-check-certificate https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh -O - | sh
 ```
 
 ## Features
