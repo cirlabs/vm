@@ -14,6 +14,8 @@ via `wget` (Linux)
 $ wget --no-check-certificate https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh -O - | sh
 ```
 
+See [PACAKGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for installed software and login details.
+
 ## Features
 The [Xubuntu 14.04](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
 - IPython
