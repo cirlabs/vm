@@ -11,9 +11,7 @@ sync_all() {
 
         if [ $? == 0 ]; then
             echo "Syncing ..."
-            set -x
-            rsync -aviuP $ASSET_PATH $device_path
-            set +x
+            rsync -aviuPW --stats --no-compress --inplace --modify-window=1 $ASSET_PATH $device_path
         fi
     done
 }
