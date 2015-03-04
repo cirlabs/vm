@@ -1,5 +1,15 @@
 #! /bin/bash
-
+# =============================
+# sync.sh
+# Take a directory at a given path and rsync it to
+# all mounted USB drives
+#
+# Tested ONLY on Ubuntu Linux
+# https://github.com/cirlabs/vm/
+#
+# Author: Aaron Williams
+# Email: awilliams@cironline.org
+# ==============================
 # adapted from http://unix.stackexchange.com/a/119260/105076
 
 VOLUME_DIR='media'
