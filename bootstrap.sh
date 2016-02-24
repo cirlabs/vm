@@ -88,6 +88,11 @@ sudo apt-get install sublime-text-installer
 print_header "installing Java"
 sudo apt-get -qq install default-jre
 
+#install Gephi
+#JRE is a dependency, so it must be installed first
+wget https://github.com/gephi/gephi/releases/download/v0.9.1/gephi-0.9.1-linux.tar.gz
+tar -xvzf gephi-0.9.1-linux.tar.gz
+
 # Install Ruby
 print_header "installing Ruby, rbenv and ruby-build"
 
