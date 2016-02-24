@@ -37,6 +37,7 @@ sudo pip install --quiet pandas
 sudo pip install --quiet csvkit
 sudo pip install --quiet miditime
 sudo pip install --quiet flask
+sudo pip install --quiet agate
 
 # make sure virtalenvwrapper is loaded and works
 print_header "  setting up virtualenvwrapper"
