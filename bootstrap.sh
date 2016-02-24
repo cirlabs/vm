@@ -8,6 +8,7 @@ print_header() {
 }
 
 print_header "updating ubuntu"
+sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get -qq update
 sudo apt-get -qq upgrade
 
@@ -72,6 +73,9 @@ print_header "installing Node.js"
 sudo apt-get -qq install nodejs
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
+#Atom text editor
+print_header "installing Atom text editor"
+sudo apt-get install -y atom
 
 #install Java
 print_header "installing Java"
