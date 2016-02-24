@@ -63,6 +63,10 @@ sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 print_header "installing QGIS"
 sudo apt-get install qgis
 
+#pspp
+print_header "installing PSPP"
+sudo apt-get install pspp
+
 # node.js
 print_header "installing Node.js"
 sudo apt-get -qq install nodejs
