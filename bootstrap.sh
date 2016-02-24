@@ -8,9 +8,11 @@ print_header() {
 }
 
 print_header "updating ubuntu"
-#Add repositories for Atom and Sublime Text 3
+#Add repositories for Atom, Sublime Text 3 and Tor Browser bundle
 sudo add-apt-repository -y ppa:webupd8team/atom
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+sudo add-apt-repository -y ppa:webupd8team/tor-browser
+
 #Update apt-get and upgrade packages
 sudo apt-get -qq update
 sudo apt-get -qq upgrade
@@ -83,6 +85,9 @@ sudo apt-get install -y atom
 #Sublime text 3
 print_header "installing Sublime Text 3"
 sudo apt-get install sublime-text-installer
+
+#Tor Browser
+sudo apt-get install tor-browser
 
 #install Java
 print_header "installing Java"
