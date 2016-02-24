@@ -36,6 +36,7 @@ sudo pip install --quiet virtualenvwrapper
 sudo pip install --quiet pandas
 sudo pip install --quiet csvkit
 sudo pip install --quiet miditime
+sudo pip install --quiet flask
 
 # make sure virtalenvwrapper is loaded and works
 print_header "  setting up virtualenvwrapper"
