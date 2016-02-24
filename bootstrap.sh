@@ -8,7 +8,10 @@ print_header() {
 }
 
 print_header "updating ubuntu"
+#Add repositories for Atom and Sublime Text 3
 sudo add-apt-repository -y ppa:webupd8team/atom
+sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+#Update apt-get and upgrade packages
 sudo apt-get -qq update
 sudo apt-get -qq upgrade
 
@@ -76,6 +79,10 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 #Atom text editor
 print_header "installing Atom text editor"
 sudo apt-get install -y atom
+
+#Sublime text 3
+print_header "installing Sublime Text 3"
+sudo apt-get install sublime-text-installer
 
 #install Java
 print_header "installing Java"
