@@ -8,10 +8,17 @@ print_header() {
 }
 
 print_header "updating ubuntu"
-#Add repositories for Atom, Sublime Text 3 and Tor Browser bundle
+#Add repositories for QGIS, Atom, Sublime Text 3 and Tor Browser bundle
+echo "deb http://qgis.org/debian trusty main" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://qgis.org/debian trusty main" | sudo tee -a /etc/apt/sources.list
+#add gpg key for qgis download and install
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
+
 sudo add-apt-repository -y ppa:webupd8team/atom
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 sudo add-apt-repository -y ppa:webupd8team/tor-browser
+
+
 
 #Update apt-get and upgrade packages
 sudo apt-get -qq update
@@ -67,7 +74,8 @@ sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 
 #qgis
 print_header "installing QGIS"
-sudo apt-get install qgis
+
+sudo apt-get install qgis python-qgis
 
 #pspp
 print_header "installing PSPP"
