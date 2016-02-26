@@ -75,7 +75,7 @@ sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 #qgis
 print_header "installing QGIS"
 
-sudo apt-get install qgis python-qgis
+sudo apt-get install -y qgis python-qgis
 
 #pspp
 print_header "installing PSPP"
