@@ -88,6 +88,9 @@ print_header "installing Node.js"
 sudo apt-get -qq install nodejs
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
+#npm
+sudo apt-get install -y npm
+
 #Atom text editor
 print_header "installing Atom text editor"
 sudo apt-get install -y atom
@@ -103,6 +106,11 @@ sudo apt-get install tor-browser
 print_header "installing Java"
 sudo apt-get -qq install default-jre
 
+#install ILENE
+git clone https://github.com/thejefflarson/ILENE
+cd ILENE
+npm install
+cd
 
 # Install Ruby
 print_header "installing Ruby, rbenv and ruby-build"
