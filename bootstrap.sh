@@ -2,9 +2,11 @@
 
 # Pretty print messages
 print_header() {
-    echo -e "\n================"
+    length=${#1}
+    line=`printf '%*s' $length | tr ' ' "="`
+    echo -e '\n'$line
     echo -e $1
-    echo -e "================\n"
+    echo -e "$line\n"
 }
 
 print_header "updating ubuntu"
