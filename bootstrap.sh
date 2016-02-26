@@ -26,8 +26,8 @@ print_header "installing git"
 sudo apt-get -qq install git-core
 
 # zsh
-print_header "installing zsh and oh-my-zsh"
-wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+# print_header "installing zsh and oh-my-zsh"
+# wget --no-check-certificate https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 
 # python scientific stack
 print_header "installing python scientific stack"
@@ -93,10 +93,6 @@ sudo apt-get install tor-browser
 print_header "installing Java"
 sudo apt-get -qq install default-jre
 
-#install Gephi
-#JRE is a dependency, so it must be installed first
-wget https://github.com/gephi/gephi/releases/download/v0.9.1/gephi-0.9.1-linux.tar.gz
-tar -xvzf gephi-0.9.1-linux.tar.gz
 
 # Install Ruby
 print_header "installing Ruby, rbenv and ruby-build"
