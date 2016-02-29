@@ -148,6 +148,9 @@ rbenv local jruby-1.7.18
 jruby -S gem install tabula-extractor
 cd # return home
 
+#perform one last upgrade to all software packages
+sudo apt-get upgrade
+
 # randomly generate animal
 # animals=$(cowsay -l | tail -n+2 | shuf)
 # test=" " read -a array <<< "$animals"
