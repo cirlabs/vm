@@ -28,7 +28,7 @@ The [Xubuntu 14.04](http://xubuntu.org/) operating system and a bunch of librari
 See [PACKAGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for full list
 
 ## Requirements
-- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (Choose your operating system)
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) Version 5.0 or greater (Choose your operating system).
 - About 10 GB of disk space locally or on an external HDD/thumbdrive
 - Time
 
