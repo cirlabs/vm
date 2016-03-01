@@ -35,7 +35,7 @@ We've installed a full suite of software commonly used by data journalists. We'v
   * Matplotlib
   * iPython
   * Virtualenv
-  * Virtualenv Wrapper
+  * Virtualenvwrapper
 * Other favorite libraries
   * BeautifulSoup 4
   * Requests
