@@ -1,6 +1,6 @@
 vm
 --
-A Linux-powered data journalism virtual machine image for VirtualBox. Meant for beginners and/or people interested in learning the data journalism stack. Direct link to the image: [Data Journalism VM .ova](https://s3.amazonaws.com/techraking/nicar-pre-k-2016.ova) (3GB, MD5: a69ce70bddee4117b80373c5909f32f0). Want to see what we've installed? Checkout the [manifest](manifest.md).
+A Linux-powered data journalism virtual machine image for VirtualBox. Meant for beginners and/or people interested in learning the data journalism stack. Direct link to the image: [Data Journalism VM .ova](https://s3.amazonaws.com/techraking/nicar-pre-k-2016.ova) (3GB; MD5: a69ce70bddee4117b80373c5909f32f0). Want to see what we've installed? Checkout the [manifest](manifest.md).
 
 ## Quickstart
 With VirtualBox installed, kick open Terminal, paste the below command and press enter:
