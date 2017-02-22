@@ -96,8 +96,8 @@ print_header "installing Atom text editor"
 sudo apt-get install -y atom
 
 #Sublime text 3
-print_header "installing Sublime Text 3"
-sudo apt-get install sublime-text-installer
+# print_header "installing Sublime Text 3"
+# sudo apt-get install sublime-text-installer
 
 #Tor Browser
 sudo apt-get install tor-browser
@@ -130,7 +130,7 @@ echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 source ~/.bashrc
-source ~/.zshrc
+# source ~/.zshrc
 
 #install latest stable version of Ruby
 rbenv install 2.2.0
@@ -138,15 +138,15 @@ rbenv global 2.2.0
 
 
 #install jruby
-print_header "installing jruby for Tabula"
-rbenv install jruby-1.7.18
-#install Tabula extractor for awesome command line pdf extraction
-echo " Setting up Tabula"
-mkdir tabula
-cd tabula
-rbenv local jruby-1.7.18
-jruby -S gem install tabula-extractor
-cd # return home
+# print_header "installing jruby for Tabula"
+# rbenv install jruby-1.7.18
+# #install Tabula extractor for awesome command line pdf extraction
+# echo " Setting up Tabula"
+# mkdir tabula
+# cd tabula
+# rbenv local jruby-1.7.18
+# jruby -S gem install tabula-extractor
+# cd # return home
 
 #perform one last upgrade to all software packages
 sudo apt-get upgrade
