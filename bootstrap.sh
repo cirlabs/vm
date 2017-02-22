@@ -11,13 +11,13 @@ print_header() {
 
 print_header "updating ubuntu"
 #Add repositories for QGIS, Atom, Sublime Text 3 and Tor Browser bundle
-echo "deb http://qgis.org/debian trusty main" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://qgis.org/debian trusty main" | sudo tee -a /etc/apt/sources.list
+echo "deb http://qgis.org/debian xenial main" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://qgis.org/debian xenial main" | sudo tee -a /etc/apt/sources.list
 #add gpg key for qgis download and install
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 073D307A618E5811
 
 sudo add-apt-repository -y ppa:webupd8team/atom
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+# sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 sudo add-apt-repository -y ppa:webupd8team/tor-browser
 
 
