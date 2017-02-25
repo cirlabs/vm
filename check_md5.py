@@ -7,6 +7,7 @@ def get_usbs():
     return drives
 
 def md5(directory, fname):
+    # Code adapted from http://stackoverflow.com/questions/3431825/generating-an-md5-checksum-of-a-file
     hash_md5 = hashlib.md5()
     filepath = path.join(directory, fname)
     with open(filepath, "rb") as f:

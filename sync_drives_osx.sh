@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Code adapted from http://stackoverflow.com/questions/34866646/most-efficient-way-to-copy-data-to-multiple-usb-drives-in-os-x
 # Don't barf if no drives mounted, or if USB is lowercase
 shopt -s nullglob
 shopt -s nocaseglob
