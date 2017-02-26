@@ -42,7 +42,7 @@ for usb in usb_paths:
 
     print "Checking {0}...".format(usb)
 
-    for filename, md5_hash in source_md5s:
+    for filename, md5_hash in source_md5s.iteritems():
 
         usb_md5 = md5(usb, filename)
 
