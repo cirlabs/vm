@@ -1,6 +1,6 @@
 vm
 --
-A Linux-powered data journalism virtual machine image for VirtualBox. Meant for beginners and/or people interested in learning the data journalism stack. Direct link to the image: [Data Journalism VM .ova](https://s3.amazonaws.com/techraking/nicar-pre-k-2016.ova) (3GB; MD5: a69ce70bddee4117b80373c5909f32f0). Want to see what we've installed? Checkout the [manifest](manifest.md).
+A Linux-powered data journalism virtual machine image for VirtualBox. Meant for beginners and/or people interested in learning the data journalism stack. Direct link to the image: [NICAR17.ova](https://s3.amazonaws.com/techraking/NICAR17/NICAR17.ova) (3GB; MD5: 30b8e6836a05affd0c2c3c72e883e908). Want to see what we've installed? Checkout the [manifest](manifest.md).
 
 ## Quickstart
 With VirtualBox installed, kick open Terminal, paste the below command and press enter:
@@ -17,7 +17,7 @@ $ wget --no-check-certificate https://raw.githubusercontent.com/cirlabs/vm/maste
 See [PACAKGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for installed software and login details.
 
 ## Features
-The [Xubuntu 14.04](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
+The [Xubuntu 16.04](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
 - IPython
 - Django
 - SQLite, MySQL, PostgreSQL/PostGIS
