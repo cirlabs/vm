@@ -62,7 +62,7 @@ echo 'export PATH="/home/nicar/.pyenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 
-source ~/.bashrc
+exec "$SHELL"
 
 pyenv update
 
