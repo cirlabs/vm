@@ -62,15 +62,18 @@ echo 'export PATH="/home/nicar/.pyenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 
-exec "$SHELL"
+sudo -s
+source /etc/bash.bashrc
 
 pyenv update
 
+print_header "Installing Python 3"
 pyenv install 3.6.4
+print_header "Installing Python 2"
 pyenv install 2.7.14
-
+print_header "Setting 3.6.4 as the default python version"
 pyenv global 3.6.4
-
+print_header "Creating virtual environments"
 mkdir code
 mkdir code/python2 && cd $_
 pyenv virtualenv 2.7.14 python-2
