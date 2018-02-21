@@ -51,9 +51,19 @@ sudo apt-get -qq install git-core
 print_header "Installing Sublime Text 3"
 sudo apt-get install sublime-text
 
+# Adding curl
+sudo apt-get install curl
+
 # pyenv
 print_header "Installing pyenv"
 curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+
+echo 'export PATH="/home/nicar/.pyenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+source ~/.bashrc
+
 pyenv update
 
 pyenv install 3.6.4
@@ -92,7 +102,7 @@ sudo pip install --quiet psycopg2
 sudo pip install --quiet altair
 
 # enable ipyvega for altair to work
-jupyter nbextension enable --sys-prefix --py vega
+sudo jupyter nbextension enable --sys-prefix --py vega
 
 
 # postgres
@@ -101,6 +111,8 @@ sudo apt-get install -qq postgresql
 sudo apt-get install -qq postgis
 
 echo "  IMPORTANT: Remember to create a Postgres superuser for your user!"
+
+sudo -u postgres createuser -s nicar
 
 # MySQL
 print_header "Installing MySQL"
