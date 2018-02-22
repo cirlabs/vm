@@ -62,7 +62,29 @@ echo 'export PATH="/home/nicar/.pyenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 
+
+# Install Ruby
+print_header "installing Ruby, rbenv and ruby-build"
+
+#install dependencies
+sudo apt-get install -qq autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+
+#install rbenv
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+#install ruby-build
+sudo -s
 source /etc/bash.bashrc
+
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+
+#install latest stable version of Ruby
+rbenv install 2.5.0
+rbenv global 2.5.0
 
 pyenv update
 
@@ -80,7 +102,6 @@ cd ..
 mkdir python3 && cd $_
 pyenv virtualenv 3.6.4 python-3
 cd ~
-
 # R and R-Studio
 print_header "Installing R"
 sudo apt-get install r-base r-base-dev
@@ -101,10 +122,11 @@ sudo pip install --quiet miditime
 sudo pip install --quiet flask
 sudo pip install --quiet agate
 sudo pip install --quiet psycopg2
+sudo pip install --quiet vega3
 sudo pip install --quiet altair
 
 # enable ipyvega for altair to work
-sudo jupyter nbextension enable --sys-prefix --py vega
+sudo jupyter nbextension install --sys-prefix --py vega3
 
 
 # postgres
@@ -155,26 +177,6 @@ cd ILENE
 npm install
 cd
 
-# Install Ruby
-print_header "installing Ruby, rbenv and ruby-build"
-
-#install dependencies
-sudo apt-get install -qq autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
-
-#install rbenv
-git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-
-#install ruby-build
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-
-source ~/.bashrc
-
-#install latest stable version of Ruby
-rbenv install 2.2.0
-rbenv global 2.2.0
 
 
 #install jruby
