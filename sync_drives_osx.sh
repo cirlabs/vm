@@ -4,14 +4,14 @@
 shopt -s nullglob
 shopt -s nocaseglob
 
-ASSET_PATH=$HOME/Desktop/TechRaking
-
+ASSET_PATH=$HOME/nicar18
+echo "$ASSET_PATH"
 # Iterate through all mounted USB drives
 for drive in /Volumes/*NAME* ; do
 
    # rsync source to USB drive in background
    echo "Syncing $drive..."
-   rsync -aviuPW --stats --inplace --modify-window=1 $ASSET_PATH "$drive"
+   rsync -aviuPW --stats --inplace --modify-window=1 --exclude=.DS_Store $ASSET_PATH "$drive"
 
 done
 

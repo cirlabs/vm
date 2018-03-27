@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Pretty print messages
 print_header() {
@@ -8,6 +8,7 @@ print_header() {
     echo -e $1
     echo -e "$line\n"
 }
+
 
 print_header "updating ubuntu"
 #Add repositories for QGIS, Sublime Text 3, R and Tor Browser bundle
@@ -41,7 +42,7 @@ sudo apt-get -qq upgrade
 
 # development
 print_header "Installing development tools"
-sudo apt-get -qq install build-essential fortune cowsay
+sudo apt-get -qq install build-essential fortune cowsay make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
 
 # Git
 print_header "Installing git"
@@ -67,7 +68,7 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 print_header "installing Ruby, rbenv and ruby-build"
 
 #install dependencies
-sudo apt-get install -qq autoconf bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt-get install -qq autoconf bison libyaml-dev libreadline6-dev libffi-dev libgdbm3 libgdbm-dev
 
 #install rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -75,16 +76,18 @@ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 
-#install ruby-build
-sudo -s
-source /etc/bash.bashrc
+source ~/.bashrc
 
+#install ruby-build
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 
 #install latest stable version of Ruby
 rbenv install 2.5.0
 rbenv global 2.5.0
+
+sudo chown -R nicar:nicar .pyenv
+sudo chown -R nicar:nicar .rbenv
 
 pyenv update
 
@@ -98,9 +101,11 @@ print_header "Creating virtual environments"
 mkdir code
 mkdir code/python2 && cd $_
 pyenv virtualenv 2.7.14 python-2
+pyenv local python-2
 cd ..
 mkdir python3 && cd $_
 pyenv virtualenv 3.6.4 python-3
+pyenv local python-3
 cd ~
 # R and R-Studio
 print_header "Installing R"
@@ -112,21 +117,23 @@ sudo apt-get -qq install python-numpy python-scipy python-matplotlib python-dev 
 
 # various Python libraries we like
 print_header "pip installing favored Python libraries"
-sudo pip install --quiet jupyter
-sudo pip install --quiet beautifulsoup4
-sudo pip install --quiet requests
-sudo pip install --quiet django==1.11.10
-sudo pip install --quiet pandas
-sudo pip install --quiet csvkit
-sudo pip install --quiet miditime
-sudo pip install --quiet flask
-sudo pip install --quiet agate
-sudo pip install --quiet psycopg2
-sudo pip install --quiet vega3
-sudo pip install --quiet altair
+pip install --quiet jupyter
+pip install --quiet beautifulsoup4
+pip install --quiet requests
+pip install --quiet django==1.11.10
+pip install --quiet pandas
+pip install --quiet csvkit
+pip install --quiet miditime
+pip install --quiet flask
+pip install --quiet agate
+pip install --quiet psycopg2
+pip install --quiet vega3
+pip install --quiet altair
 
 # enable ipyvega for altair to work
-sudo jupyter nbextension install --sys-prefix --py vega3
+source .bashrc
+jupyter nbextension install --sys-prefix --py vega3
+jupyter nbextension enable vega3 --py --sys-prefix
 
 
 # postgres
