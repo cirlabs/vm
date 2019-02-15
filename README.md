@@ -17,7 +17,7 @@ $ wget --no-check-certificate https://raw.githubusercontent.com/cirlabs/vm/maste
 See [PACAKGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for installed software and login details.
 
 ## Features
-The [Xubuntu 16.04](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
+The [Xubuntu 18.04](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
 - IPython
 - Django
 - SQLite, MySQL, PostgreSQL/PostGIS

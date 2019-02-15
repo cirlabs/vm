@@ -12,8 +12,8 @@ print_header() {
 
 print_header "updating ubuntu"
 #Add repositories for QGIS, Sublime Text 3, R and Tor Browser bundle
-echo "deb http://qgis.org/debian xenial main" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://qgis.org/debian xenial main" | sudo tee -a /etc/apt/sources.list
+echo "deb http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
+echo "deb-src http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
 
 #add gpg key for qgis download and install
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
@@ -30,7 +30,7 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 sudo add-apt-repository -y ppa:webupd8team/tor-browser
 
 # point apt to the ubuntu repository for R
-sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
+sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu bionic/" | sudo tee -a /etc/apt/sources.list
 
 # add gpg key for R
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key E084DAB9
