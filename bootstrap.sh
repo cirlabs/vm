@@ -10,7 +10,7 @@ print_header() {
 }
 
 
-print_header "updating ubuntu"
+print_header "Updating Ubuntu"
 #Add repositories for QGIS, Sublime Text 3, R and Tor Browser bundle
 echo "deb http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
 echo "deb-src http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
@@ -45,7 +45,7 @@ print_header "Installing development tools"
 sudo apt-get -qq install build-essential fortune cowsay make libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
 
 # Git
-print_header "Installing git"
+print_header "Installing Git"
 sudo apt-get -qq install git-core
 
 # Sublime Text 3
@@ -154,16 +154,16 @@ print_header "Installing Sqlite3"
 sudo apt-get install sqlite3 libsqlite3-dev
 
 #qgis
-print_header "installing QGIS"
+print_header "Installing QGIS"
 
 sudo apt-get install -y qgis python-qgis
 
 #pspp
-print_header "installing PSPP"
+print_header "Installing PSPP"
 sudo apt-get install pspp
 
 # node.js
-print_header "installing Node.js"
+print_header "Installing Node.js"
 sudo apt-get -qq install nodejs
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
