@@ -11,11 +11,11 @@ print_header() {
 
 
 print_header "Updating Ubuntu"
-#Add repositories for QGIS, Sublime Text 3, R and Tor Browser bundle
+# Add repositories for QGIS, Sublime Text 3, R and Tor Browser bundle
 echo "deb http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
 echo "deb-src http://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
 
-#add gpg key for qgis download and install
+# add gpg key for qgis download and install
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 # add gpg key for Sublime Text 3
@@ -26,8 +26,6 @@ sudo apt-get install apt-transport-https
 
 # select the stable version of Sublime Text 3
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-
-sudo add-apt-repository -y ppa:webupd8team/tor-browser
 
 # point apt to the ubuntu repository for R
 sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu bionic/" | sudo tee -a /etc/apt/sources.list
@@ -55,6 +53,10 @@ sudo apt-get install sublime-text
 # Adding curl
 sudo apt-get install curl
 
+# R and R-Studio
+print_header "Installing R"
+sudo apt-get install r-base r-base-dev
+
 # pyenv
 print_header "Installing pyenv"
 curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
@@ -67,10 +69,10 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 # Install Ruby
 print_header "installing Ruby, rbenv and ruby-build"
 
-#install dependencies
+# Install dependencies
 sudo apt-get install -qq autoconf bison libyaml-dev libreadline6-dev libffi-dev libgdbm3 libgdbm-dev
 
-#install rbenv
+# Install rbenv
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -78,13 +80,13 @@ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 
 source ~/.bashrc
 
-#install ruby-build
+# Install ruby-build
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 
-#install latest stable version of Ruby
-rbenv install 2.5.0
-rbenv global 2.5.0
+# Install latest stable version of Ruby
+rbenv install 2.6.1
+rbenv global 2.6.1
 
 sudo chown -R nicar:nicar .pyenv
 sudo chown -R nicar:nicar .rbenv
@@ -92,35 +94,33 @@ sudo chown -R nicar:nicar .rbenv
 pyenv update
 
 print_header "Installing Python 3"
-pyenv install 3.6.4
+pyenv install 3.7.2
 print_header "Installing Python 2"
-pyenv install 2.7.14
-print_header "Setting 3.6.4 as the default python version"
-pyenv global 3.6.4
+pyenv install 2.7.15
+print_header "Setting 3.7.2 as the default Python version"
+pyenv global 3.7.2
 print_header "Creating virtual environments"
 mkdir code
 mkdir code/python2 && cd $_
-pyenv virtualenv 2.7.14 python-2
+pyenv virtualenv 2.7.15 python-2
 pyenv local python-2
 cd ..
 mkdir python3 && cd $_
-pyenv virtualenv 3.6.4 python-3
+pyenv virtualenv 3.7.2 python-3
 pyenv local python-3
 cd ~
-# R and R-Studio
-print_header "Installing R"
-sudo apt-get install r-base r-base-dev
 
 # python scientific stack
-print_header "Installing python scientific stack"
+print_header "Installing Python scientific stack"
 sudo apt-get -qq install python-numpy python-scipy python-matplotlib python-dev python-pip python-sip pyqt4-dev-tools
 
 # various Python libraries we like
 print_header "pip installing favored Python libraries"
+pip install --quiet --upgrade pip
 pip install --quiet jupyter
 pip install --quiet beautifulsoup4
 pip install --quiet requests
-pip install --quiet django==1.11.10
+pip install --quiet django
 pip install --quiet pandas
 pip install --quiet csvkit
 pip install --quiet miditime
@@ -134,7 +134,6 @@ pip install --quiet altair
 source .bashrc
 jupyter nbextension install --sys-prefix --py vega3
 jupyter nbextension enable vega3 --py --sys-prefix
-
 
 # postgres
 print_header "installing latest PostgreSQL and PostGIS"
@@ -150,7 +149,7 @@ print_header "Installing MySQL"
 sudo apt-get -qq install mysql-server mysql-client libmysqlclient-dev
 
 # Sqlite3
-print_header "Installing Sqlite3"
+print_header "Installing SQLite3"
 sudo apt-get install sqlite3 libsqlite3-dev
 
 #qgis
@@ -167,15 +166,17 @@ print_header "Installing Node.js"
 sudo apt-get -qq install nodejs
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
+
 #npm
 sudo apt-get install -y npm
 
 
 #Tor Browser
-sudo apt-get install tor-browser
+sudo apt-get install tor
+
 
 #install Java
-print_header "installing Java"
+print_header "Installing Java"
 sudo apt-get -qq install default-jre
 
 #install ILENE
@@ -184,26 +185,8 @@ cd ILENE
 npm install
 cd
 
-
-
-#install jruby
-# print_header "installing jruby for Tabula"
-# rbenv install jruby-1.7.18
-# #install Tabula extractor for awesome command line pdf extraction
-# echo " Setting up Tabula"
-# mkdir tabula
-# cd tabula
-# rbenv local jruby-1.7.18
-# jruby -S gem install tabula-extractor
-# cd # return home
-
 #perform one last upgrade to all software packages
 sudo apt-get upgrade
 
-# randomly generate animal
-# animals=$(cowsay -l | tail -n+2 | shuf)
-# test=" " read -a array <<< "$animals"
-
-# # cowsay
 # cowsay -f ${array[2]} "All done! Now, go save journalism!"
 cowsay "All done! Now, go save journalism!"
