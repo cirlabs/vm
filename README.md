@@ -14,22 +14,22 @@ via `wget` (Linux)
 $ wget --no-check-certificate https://raw.githubusercontent.com/cirlabs/vm/master/install-vm.sh -O - | sh
 ```
 
-See [PACAKGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for installed software and login details.
+See [PACKAGE](PACKAGE) for installed software and login details.
 
 ## Features
-The [Xubuntu 16.04](http://xubuntu.org/) operating system and a bunch of libraries comingly used by data journalist like:
+The [Xubuntu 18.04](http://xubuntu.org/) operating system and a bunch of libraries commonly used by data journalists like:
 - IPython
 - Django
 - SQLite, MySQL, PostgreSQL/PostGIS
-- PANDAS
+- pandas
 - QGIS
 - csvkit
 
-See [PACKAGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for full list
+See [PACKAGE](PACKAGE) for full list
 
 ## Requirements
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) Version 5.0 or greater (Choose your operating system).
-- About 10 GB of disk space locally or on an external HDD/thumbdrive
+- About 10 GB of disk space locally or on an external HDD/thumb drive
 - Time
 
 ## Installing the Virtual Machine
@@ -51,11 +51,11 @@ See [PACKAGE](https://github.com/cirlabs/vm/blob/master/PACKAGE) for full list
 5. Starts the virtual machine
 
 ### Windows users
-Follow the instructions in [INSTALL](https://github.com/cirlabs/vm/blob/master/INSTALL.md)
+Follow the instructions in [INSTALL](INSTALL.md)
 
 
 ## Roll your own
-Not enterested in using VirtualBox but want to bootstrap a Linux box for data journalism? Checkout [bootstrap.sh](https://github.com/cirlabs/vm/blob/master/bootstrap.sh).
+Not interested in using VirtualBox but want to bootstrap a Linux box for data journalism? Checkout [bootstrap.sh](bootstrap.sh).
 
 ## Cleanup
 The 3 GB .ova file should be saved to `~/.vms`. You can remove it, as well as any other files, to regain that disk space back. You can also remove the `install-vm.sh` file.
@@ -63,7 +63,7 @@ The 3 GB .ova file should be saved to `~/.vms`. You can remove it, as well as an
 ## Limitations / Notes
 - The VM will have a 800x600 screen resolution on startup. There are ways to make your VM fit the size of your host display but that goes on beyond the scope of this project. See [VirtualBox Manual 1.8.5. Resizing the machine's window](https://www.virtualbox.org/manual/ch01.html#intro-resize-window) for more details. Do note that installing VirtualBox Guest Additions only works for Windows and Linux users. Sorry Mac folks.
 
-- This VM is meant as a place to practice and learn about data journalism and software development. It's running a lightweight Linux distribtion and uses just enough RAM to not be a headache. While it is my hope you use this VM to learn and create some awesome projects, my greater hope would be that you abandon the VM altogether and configure your laptop directly with either Linux or whatever OS you prefer. Again, more than anything, this is more of a teaching tool than a fully supported out-the-box rig. That could change in the future, but that is the focus of this project as of now.
+- This VM is meant as a place to practice and learn about data journalism and software development. It's running a lightweight Linux distribution and uses just enough RAM to not be a headache. While it is my hope you use this VM to learn and create some awesome projects, my greater hope would be that you abandon the VM altogether and configure your laptop directly with either Linux or whatever OS you prefer. Again, more than anything, this is more of a teaching tool than a fully supported out-of-the-box rig. That could change in the future, but that is the focus of this project as of now.
 
 ## Help
 [Open an issue](https://github.com/cirlabs/vm/issues)

@@ -3,11 +3,12 @@ User: nicar
 Password: nicar
 
 # VirtualBox Image Notes
-- OS: Xubuntu Linux 14.04
+- OS: Xubuntu Linux 18.04
 - RAM: 2GB
 - HDD: 2 TB Total Capacity / (7.42 GB when first installed) Dynamically allocated
 
-# installed command line programs
+# Installed command line programs
+
 csvkit
 Python
 Git
@@ -17,10 +18,8 @@ MySQL
 PostgreSQL
 IPython
 PostGIS
-PANDAS
+pandas
 Ilene
-virtualenv
-virtualenvwrapper
 QuantumGIS
 Node.js
 NPM
@@ -35,7 +34,7 @@ Yeoman
 # GUI programs
 Google Chrome
 Mozilla Firefox
-Sublime Text 3 Beta
+Sublime Text 3
 
 # Projects to explore
 [Everyday Scripting](https://github.com/armendariz/everyday_scripting) Located in /home/nicar/Code/everyday_scripting
