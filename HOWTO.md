@@ -25,11 +25,13 @@ This guide will show you how to create a VirtualBox virtual machine from scratch
     - set the username and password
     - For techraking: `nicar` with the password `nicar`
 
-- Setup Guest Additions
+- Set Up Guest Additions
     - Guest Additions will give you full resolution and filesystem sharing, which are quite nice in VMs
-    - Log into the Xubuntu VM, open up the terminal and run this command:
-        - `sudo apt-get install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11`
-    - Restart the VM to have a theoretically native resolution supported virtual machine
+    - Log into the Xubuntu VM, and select Menu > Menu Bar > Menu Bar Settings, then toggle "Devices" and confirm with the green button to the right.
+    - You should then see a "Devices" dropdown menu for VirtualBox, where you will select "Insert Guest Additions CD Image."
+    - Go to the Terminal Emulator and `cd /media/nicar/VBox_GAs_6.0.4`, or whatever path you wind up with after tab-completing from `/nicar/`
+    - run `sudo ./VBoxLinuxAdditions.run`, which will likely prompt you for your password.
+    - Now, when you resize the VirtualBox window, it will auto-resize, and you won't see scrollbars along either axis.
 
 ## Bootstrap the box
 - Fetch the bootstrap script by downloading it with `wget`. Open up terminal and type:
@@ -40,17 +42,6 @@ This guide will show you how to create a VirtualBox virtual machine from scratch
     - `$ . ./bootstrap.sh`
         - See: http://stackoverflow.com/a/16011496/868724
     - NOTE: This'll take some time. The first commands to run are `apt-get update` and `apt-get upgrade`. These two commands will make sure the the operating systems has the latest and greatest security patches and features. These are key before installing the rest of the software.
-
-## Extra changes
-Here are some last configuration changes to do after `bootstrap.sh` finishes executing.
-
-- Configure PostgreSQL
-
-```bash
-$ sudo su - postgres
-$ "CREATE USER nicar SUPERUSER;" | psql -d postgres
-$ exit
-```
 
 ## Export
 1. Open VirtualBox
