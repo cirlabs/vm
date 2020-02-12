@@ -129,6 +129,8 @@ pip install --quiet agate
 pip install --quiet psycopg2
 pip install --quiet vega3
 pip install --quiet altair
+pip install --quiet census
+pip install --quiet us
 
 # enable ipyvega for altair to work
 source .bashrc
